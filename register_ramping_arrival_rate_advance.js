@@ -8,18 +8,25 @@ export const options = {
     scenarios: {
         userRegistration: {
             exec: "userRegistration",
-            executor: "constant-arrival-rate", // Pendaftaran pengguna dengan tingkat kedatangan tetap
-            rate: 100, // 10 pendaftaran per detik
+            executor: "ramping-arrival-rate", // Menggunakan ramping untuk melihat batas kapasitas
+            startRate: 20, // Mulai dari 20 request per detik
             timeUnit: '1s', // Setiap detik
-            duration: '30s', // Durasi tes 30 detik
-            preAllocatedVUs: 50, // Pengguna virtual yang disiapkan
-            maxVUs: 100, // Pengguna virtual maksimum
+            stages: [
+                { target: 100, duration: '30s' }, // Naik menjadi 100 request per detik selama 1 menit
+                { target: 200, duration: '30s' }, // Naik menjadi 200 request per detik selama 1 menit
+                // { target: 300, duration: '30s' }, // Naik menjadi 300 request per detik selama 1 menit
+                // { target: 400, duration: '30s' }, // Naik menjadi 400 request per detik selama 1 menit
+                // { target: 500, duration: '30s' }, // Naik menjadi 500 request per detik selama 1 menit
+            ],
+            preAllocatedVUs: 50, // Pengguna virtual awal yang disiapkan
+            maxVUs: 500, // Pengguna virtual maksimum
         }
     },
     thresholds: {
         user_registration_counter_success: ['count>90'],
         user_registration_counter_error: ['count<10'],
-        'dropped_iterations': ['rate<0.05'],
+        'dropped_iterations': ['rate<0.05'], // Maksimum 5% dropped iterations
+        http_req_duration: ['p(95)<3000'], // 95% request harus di bawah 3 detik
     }
 };
 
