@@ -8,7 +8,7 @@ export const options = {
     scenarios: {
         userRegistration: {
             exec: "userRegistration",
-            executor: "shared-iterations", // Cocok untuk uji beban registrasi
+            executor: "", // Cocok untuk uji beban registrasi
             vus: 20, // 50 virtual users
             iterations: 500, // Total 1000 registrasi
             maxDuration: '30s', // Batas waktu maksimum 1 menit

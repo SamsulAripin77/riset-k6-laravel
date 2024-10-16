@@ -3,7 +3,6 @@ import { Counter } from 'k6/metrics';
 import { uuidv4 } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 
 const BASE_URL = 'http://host.docker.internal:8000/api'; // URL API
-
 export const options = {
     scenarios: {
         userRegistration: {

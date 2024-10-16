@@ -14,9 +14,9 @@ export const options = {
             stages: [
                 { target: 100, duration: '30s' }, // Naik menjadi 100 request per detik selama 1 menit
                 { target: 200, duration: '30s' }, // Naik menjadi 200 request per detik selama 1 menit
-                // { target: 300, duration: '30s' }, // Naik menjadi 300 request per detik selama 1 menit
-                // { target: 400, duration: '30s' }, // Naik menjadi 400 request per detik selama 1 menit
-                // { target: 500, duration: '30s' }, // Naik menjadi 500 request per detik selama 1 menit
+                { target: 300, duration: '30s' }, // Naik menjadi 300 request per detik selama 1 menit
+                { target: 400, duration: '30s' }, // Naik menjadi 400 request per detik selama 1 menit
+                { target: 500, duration: '30s' }, // Naik menjadi 500 request per detik selama 1 menit
             ],
             preAllocatedVUs: 50, // Pengguna virtual awal yang disiapkan
             maxVUs: 500, // Pengguna virtual maksimum

@@ -10,10 +10,10 @@ export const options = {
     scenarios: {
         userRegistration: {
             executor: "constant-arrival-rate",
-            rate: 5, // 5 users per second
+            rate: 10, // 5 users per second
             timeUnit: "1s",
             duration: "1m",
-            preAllocatedVUs: 5,
+            preAllocatedVUs: 10,
             maxVUs: 20,
         },
     },
