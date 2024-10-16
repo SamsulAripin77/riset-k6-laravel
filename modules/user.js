@@ -7,7 +7,8 @@ export function registerUser(body, BASE_URL) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-        }
+        },
+        timeout: '60s',
     });
 
     check(registerResponse, {
@@ -24,13 +25,15 @@ export function loginUser(body, BASE_URL) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-        }
+        },
+        timeout: '50s',
     });
 
     check(loginResponse, {
         'login response status must be 200': (response) => response.status === 200,
         'login response must contain token': (response) => response.json('token') !== null,
     });
+
 
     return loginResponse;
 }
